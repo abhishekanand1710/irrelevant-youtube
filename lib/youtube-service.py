@@ -47,6 +47,10 @@ def main():
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
+    
+    video_details = get_video_details(youtube, ["7kLi8u2dJz0"])
+    video_text_details_df = pd.DataFrame(video_details)
+    video_text_details_df.to_csv("data/7kLi8u2dJz0-details.csv")
 
     gb_ids = read_csv("youtube-dataset/GBvideos.csv")
     gb_details = get_video_details(youtube, gb_ids)

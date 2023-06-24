@@ -1,0 +1,42 @@
+,id,title,description
+0,7kLi8u2dJz0,"What is BERT? | Deep Learning Tutorial 46 (Tensorflow, Keras & Python)","What is BERT (Bidirectional Encoder Representations From Transformers) and how it is used to solve NLP tasks? This video provides a very simple explanation of it. I am not going to go in details of how transformer based architecture works etc but instead I will go over an overview where you understand the usage of BERT in NLP tasks. In coding section we will generate sentence and word embeddings using BERT for some sample text.
+
+We will cover various topics such as,
+* Word2vec vc BERT
+* How BERT is trained on masked language model and next sentence completion task
+
+⭐️ Timestamps ⭐️
+00:00 Introduction
+00:39 Theory
+11:00 Coding in tensorflow
+
+Code: https://github.com/codebasics/deep-learning-keras-tf-tutorial/blob/master/46_BERT_intro/bert_intro.ipynb
+
+BERT article: http://jalammar.github.io/illustrated-bert/
+Word2Vec video: https://www.youtube.com/watch?v=hQwFeIupNP0
+
+Do you want to learn technology from me? Check https://codebasics.io/?utm_source=description&utm_medium=yt&utm_campaign=description&utm_id=description for my affordable video courses.
+
+Deep learning playlist: https://www.youtube.com/playlist?list=PLeo1K3hjS3uu7CxAacxVndI4bE_o3BDtO
+Machine learning playlist: https://www.youtube.com/playlist?list=PLeo1K3hjS3uvCeTYTeyfe0-rN5r8zn9rw  
+
+🔖Hashtags🔖
+
+#bertmodelnlppython #tensorflowbert #tensorflowberttutorial #bert #bertneuralnetwork #bertdeeplearning #whatisbert #bertnlp #bertindeeplearning #bertmodel #bertmodelnlp
+
+🌎 My Website For Video Courses: https://codebasics.io/?utm_source=description&utm_medium=yt&utm_campaign=description&utm_id=description
+
+Need help building software or data analytics and AI solutions? My company https://www.atliq.com/ can help. Click on the Contact button on that website.
+
+🎥 Codebasics Hindi channel: https://www.youtube.com/channel/UCTmFBhuhMibVoSfYom1uXEg
+
+#️⃣ Social Media #️⃣
+🔗 Discord:  https://discord.gg/r42Kbuk
+📸 Dhaval's Personal Instagram: https://www.instagram.com/dhavalsays/
+📸 Instagram: https://www.instagram.com/codebasicshub/
+🔊 Facebook: https://www.facebook.com/codebasicshub
+📱 Twitter: https://twitter.com/codebasicshub
+📝 Linkedin (Personal): https://www.linkedin.com/in/dhavalsays/
+📝 Linkedin (Codebasics):  https://www.linkedin.com/company/codebasics/
+
+❗❗ DISCLAIMER: All opinions expressed in this video are of my own and not that of my employers'."
