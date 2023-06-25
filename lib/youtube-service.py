@@ -28,6 +28,38 @@ def get_video_details(youtube, ids):
         details.extend(temp_details)
     return details
 
+def get_video_comments(youtube, id):
+    comments = []
+    replies = []
+    request = youtube.commentThreads().list(
+        part="snippet,replies", videoId=id
+    )
+    response = request.execute()
+    while response:
+        for item in response['items']:
+            comment = item['snippet']['topLevelComment']['snippet']['textDisplay']
+            reply_count = item['snippet']['totalReplyCount']
+ 
+            if reply_count>0:
+                for reply in item['replies']['comments']:
+                    reply = reply['snippet']['textDisplay']
+                    replies.append(reply)
+ 
+            comments.append({"comment": comment, "replies": replies})
+ 
+            replies = []
+ 
+        # Again repeat
+        if 'nextPageToken' in response:
+            response = youtube.commentThreads().list(
+                    part = 'snippet,replies',
+                    videoId = id,
+                    pageToken = response['nextPageToken']  
+                ).execute()
+        else:
+            break
+    return comments
+
 def read_csv(file_path):
     df = pd.read_csv(file_path, on_bad_lines="skip")
     return df.video_id.values
@@ -41,26 +73,31 @@ def main():
     api_version = "v3"
     client_secrets_file = "credentials.json"
 
+
     # Get credentials and create an API client
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
         client_secrets_file, scopes)
     credentials = flow.run_console()
     youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, credentials=credentials)
+        api_service_name, api_version, developerKey="API_KEY")
     
-    video_details = get_video_details(youtube, ["7kLi8u2dJz0"])
+    video_comments = get_video_comments(youtube, "0lOSvOoF2to")
+    video_comments_df = pd.DataFrame(video_comments)
+    video_comments_df.to_csv("data/0lOSvOoF2to-comments.csv")
+    
+    video_details = get_video_details(youtube, ["0lOSvOoF2to"])
     video_text_details_df = pd.DataFrame(video_details)
-    video_text_details_df.to_csv("data/7kLi8u2dJz0-details.csv")
+    video_text_details_df.to_csv("data/0lOSvOoF2to-details.csv")
 
-    gb_ids = read_csv("youtube-dataset/GBvideos.csv")
-    gb_details = get_video_details(youtube, gb_ids)
-    gb_text_details_df = pd.DataFrame(gb_details)
-    gb_text_details_df.to_csv("youtube-dataset/GBtext-details.csv")
+    # gb_ids = read_csv("youtube-dataset/GBvideos.csv")
+    # gb_details = get_video_details(youtube, gb_ids)
+    # gb_text_details_df = pd.DataFrame(gb_details)
+    # gb_text_details_df.to_csv("youtube-dataset/GBtext-details.csv")
 
-    us_ids = read_csv("youtube-dataset/USvideos.csv")
-    us_details = get_video_details(youtube, us_ids)
-    us_text_details_df = pd.DataFrame(us_details)
-    us_text_details_df.to_csv("youtube-dataset/UStext-details.csv")
+    # us_ids = read_csv("youtube-dataset/USvideos.csv")
+    # us_details = get_video_details(youtube, us_ids)
+    # us_text_details_df = pd.DataFrame(us_details)
+    # us_text_details_df.to_csv("youtube-dataset/UStext-details.csv")
 
     
 
